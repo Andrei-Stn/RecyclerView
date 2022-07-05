@@ -18,11 +18,10 @@ class FragmentRecycler: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentRecyclerBinding.inflate(inflater,container, false)
-        return binding.root
-
-
+        val view = binding.root
+        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,6 +43,7 @@ class FragmentRecycler: Fragment() {
             todoList.add(todo)
 
             adapter.notifyItemInserted(todoList.size-1)
+            binding.etTotdo.text.clear()
         }
 
     }
